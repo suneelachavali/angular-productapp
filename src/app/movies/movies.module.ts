@@ -3,24 +3,25 @@ import { RouterModule } from '@angular/router';
 import { SharedModule } from '../shared/shared.module';
 
 import { MoviesService } from './movies.service';
-import { MoviesComponent } from './movies.component';
-import { MoviesMatrixComponent } from './moviesMatrix.component';
+import { MoviesPopupComponent } from './moviesPopup.component';
+import { MoviesPanelComponent } from './moviesPanel.component';
+
 
 
 @NgModule({
     //components and pipes
     imports: [
         RouterModule.forChild([
-            {path: 'movies', component: MoviesComponent},
-            {path: 'moviesMatrix', component: MoviesMatrixComponent}
+            {path: 'moviesPopup', component: MoviesPopupComponent},
+            {path: 'moviesPanel', component: MoviesPanelComponent}
          ]),
          SharedModule
     ],
 
     //modules
     declarations: [
-        MoviesComponent,
-        MoviesMatrixComponent
+        MoviesPopupComponent,
+        MoviesPanelComponent
      ],
 
     //services

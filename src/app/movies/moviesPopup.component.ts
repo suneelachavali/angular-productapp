@@ -1,13 +1,14 @@
 import { Component } from '@angular/core';
 import { MoviesService } from './movies.service';
+import { IMovie } from './movie.model';
 
 @Component ({
-    templateUrl: './moviesMatrix.component.html'
+    templateUrl: './moviesPopup.component.html'
 })
 
-export class MoviesMatrixComponent{
+export class MoviesPopupComponent{
 
-    movies: any[];
+    movies: IMovie[];
 
     constructor(private _movies:MoviesService){}
 
