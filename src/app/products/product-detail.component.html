@@ -1,0 +1,13 @@
+<div class="panel panel-danger">
+    <div class="panel-heading">
+        Product detail for id {{id}}
+    </div>
+    <div class="panel-body">
+        <h3>Product Name: {{productDetail[0].productName}}</h3>
+        <h4>Product Description: {{productDetail[0].description}}</h4>
+        <div><img [src]="productDetail[0].imageUrl"/></div>
+        <button class="btn btn-danger" (click) = "onBack()"> <!--This is another way to navigate, can also use the RouterLink here-->
+            <<Back
+        </button>
+    </div>
+</div>

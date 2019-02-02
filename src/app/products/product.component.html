@@ -1,6 +1,6 @@
 <div class="panel panel-primary">
     <div class="panel-heading">
-        Products Page
+        {{title}}
     </div>
     <div class="panel-body">
         <div class="row">
@@ -8,17 +8,54 @@
                 Filter By:
             </div>
             <div class="col-md-4">
-                <input type="text" placeholder="Enter Text" />
+                <input type="text" placeholder="Enter Text" [(ngModel)] = "userInput"/>
             </div>
         </div>
         <div class="row">
             <div class="col-md-6">
-                <h4>Filter Result:</h4>
+                <h4>{{info}}: {{(products|search:userInput).length}}</h4>
             </div>
         </div>
-        <div class="table-rsponsive">
-            
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            <button class="btn btn-primary"
+                                (click) = "toggleImage()">
+                                {{showImage ? "Hide Image" : "Show Image"}}
+                            </button>
+                        </th>
+                        <th>Name</th>
+                        <th>Code</th>
+                        <th>Date</th>
+                        <th>Regular Price</th>
+                        <th>Sale price</th>
+                        <th>Rating</th>
+                        <th>Star Rating</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let prod of products | search: userInput">
+                        <td>
+                            <img [src]="prod.imageUrl" *ngIf="showImage" [style.width.px]="imageWidth"/>
+                        </td>
+                        <td>
+                            <a [routerLink]= "['/products', prod.productId]">{{prod.productName}}</a>
+                        </td>
+                        <td>{{prod.productCode | case:'lower': 'aaa'}}</td>
+                        <td>{{prod.releaseDate | date}}</td>
+                        <td>{{prod.price | currency:"USD"}}</td>
+                        <td [ngStyle] = "{'color': prod.price < 20 ? 'red' : 'black'}">{{prod.price | discount:5 | currency}}</td>
+                        <td>{{prod.starRating}}</td>
+                        <td><app-star [rating]="prod.starRating" (ratingOutput)="onDataReceive($event)"></app-star></td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 </div>
 
+  <!-- query Param for <a> 
+   [queryParams] = "{name:prod.productName, description:prod.description, image:prod.imageUrl}">
+    {{prod.productName | titlecase}}-->
