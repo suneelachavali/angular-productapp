@@ -11,6 +11,7 @@ import { HomeComponent } from './home/home.component';
 import { NotFoundComponent } from './shared/NotFound.Component';
 import { ProductModule } from './products/product.module';
 import { MoviesModule } from './movies/movies.module';
+import { MusicModule } from './music/music.module';
 
 @NgModule({
 
@@ -34,7 +35,8 @@ import { MoviesModule } from './movies/movies.module';
         ]),
         HttpClientModule,
         ProductModule,
-        MoviesModule
+        MoviesModule,
+        MusicModule
     ],
 
     //Only first component goes here

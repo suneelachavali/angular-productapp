@@ -1,0 +1,50 @@
+<div class="panel panel-primary">
+    <div class="panel-body">
+        <div class="table-responsive">
+            <table>
+                <tbody>
+                    <tr *ngFor="let mus of music">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr style="background-color: lightsteelblue">
+                                    <td>
+                                        <h2>*******Artists********</h2>
+                                    </td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let artist of mus.artists">
+                                    <td>
+                                        <h4>Id: {{artist.id}}</h4>
+                                        <h4>Name: {{artist.name}}</h4>
+                                        <h4>Cover: {{artist.cover}}</h4>
+                                        <h4>Bio: {{artist.bio}}</h4>
+                                        <h4>Genre: {{artist.genre}}</h4>
+                                        <div style="padding-left: 20px" >
+                                        <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#albums">Albums</button>
+                                        <div id="albums" class="collapse">
+                                                <table class="table table-striped">
+                                                    <tbody>
+                                                        <tr *ngFor="let album of artist.albums">
+                                                            <td>
+                                                                <h5>Id: {{album.albumId}}</h5>
+                                                                <h5>Title: {{album.title}}</h5>
+                                                                <h5>Year: {{album.year}}</h5>
+                                                                <h5>Cover: {{album.cover}}</h5>
+                                                                <h5>Price: {{album.price | currency}}</h5>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>    
+                                    </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
